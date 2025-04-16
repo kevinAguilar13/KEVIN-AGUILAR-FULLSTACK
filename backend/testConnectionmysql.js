@@ -7,4 +7,4 @@ const db = require('./db2');
     } catch (error) {
         console.error('Error de conexión:', error);
     }
-})();
+})();                   

@@ -2,10 +2,11 @@
 const express = require('express');
 const cors = require('cors');
 const productRoutes = require('./routers/productRouters');
+const clienteroutes = require('./routers/clienteRouters');
 
 class Server {
   constructor() {
-    this.app = express();
+    this.app = express()
     this.config();
     this.routes();
   }
@@ -18,12 +19,13 @@ class Server {
   routes() {
     // Todas las rutas de productos se alojarán en /productos
     this.app.use('/productos', productRoutes);
+    this.app.use('/clientes', clienteroutes);
   }
 
   start() {
     const PORT = process.env.PORT || 3000;
     this.app.listen(PORT, () => {
-      console.log('Servidor corriendo en el puerto ${PORT}');
+      console.log(`Servidor corriendo en el puerto ${PORT}`);
     });
   }
 }

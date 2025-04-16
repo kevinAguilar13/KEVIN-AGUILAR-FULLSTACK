@@ -5,7 +5,7 @@ class Database{
         this.Pool = new Pool({
             user: 'postgres',
             host:'localhost',
-            database :'prueba1',
+            database :'ventasdb',
             password:'admin123',
             port:5432,
         });
