@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const clienteController = require('../controllers/clienteController');
 
-// Agrega el prefijo "/clientes" a todas las rutas
-router.get('/clientes', clienteController.getAllClientes);
-router.get('/clientes/id/:id', clienteController.getClienteById);
-router.get('/clientes/dni/:dni', clienteController.getClienteByDni);
-router.post('/clientes', clienteController.createCliente);
-router.put('/clientes/id/:id', clienteController.updateClienteById);
-router.put('/clientes/dni/:dni', clienteController.updateClienteByDni);
-router.delete('/clientes/id/:id', clienteController.deleteClienteById);
-router.delete('/clientes/dni/:dni', clienteController.deleteClienteByDni);
+// Rutas SIN el prefijo /clientes (ya está en server.js)
+router.get('/', clienteController.getAllClientes);          // GET /clientes
+router.get('/id/:id', clienteController.getClienteById);    // GET /clientes/id/1
+router.get('/dni/:dni', clienteController.getClienteByDni); // GET /clientes/dni/12345678
+router.post('/', clienteController.createCliente);          // POST /clientes
+router.put('/id/:id', clienteController.updateClienteById); // PUT /clientes/id/1
+router.put('/dni/:dni', clienteController.updateClienteByDni); // PUT /clientes/dni/12345678
+router.delete('/id/:id', clienteController.deleteClienteById); // DELETE /clientes/id/1
+router.delete('/dni/:dni', clienteController.deleteClienteByDni); // DELETE /clientes/dni/12345678
 
 module.exports = router;

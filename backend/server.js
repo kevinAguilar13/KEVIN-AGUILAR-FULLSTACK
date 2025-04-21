@@ -1,14 +1,15 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const productRoutes = require('./routers/productRouters');
 const clienteroutes = require('./routers/clienteRouters');
+const errorHandler = require('./middlewares/errorHandler');
 
 class Server {
   constructor() {
-    this.app = express()
+    this.app = express();
     this.config();
     this.routes();
+    this.addErrorHandler(); // Añadir el manejador de errores
   }
 
   config() {
@@ -17,9 +18,13 @@ class Server {
   }
 
   routes() {
-    // Todas las rutas de productos se alojarán en /productos
     this.app.use('/productos', productRoutes);
     this.app.use('/clientes', clienteroutes);
+  }
+
+  // Nuevo método para el manejo de errores
+  addErrorHandler() {
+    this.app.use(errorHandler);
   }
 
   start() {
